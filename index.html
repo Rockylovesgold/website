@@ -6,10 +6,43 @@
   <meta name="description" content="Becks &amp; Clates — Premium brand strategy and performance marketing consulting. We build brands that endure.">
   <title>Becks &amp; Clates — Brand Strategy &amp; Consulting</title>
 
-  <!-- Fonts -->
+  <!-- Canonical -->
+  <link rel="canonical" href="https://becksandclates.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://becksandclates.com/">
+  <meta property="og:title"       content="Becks &amp; Clates — Brand Strategy &amp; Consulting">
+  <meta property="og:description" content="Premium brand strategy and performance marketing consulting. We build brands that endure.">
+  <meta property="og:image"       content="https://becksandclates.com/assets/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale"      content="en_GB">
+  <meta property="og:site_name"   content="Becks &amp; Clates">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Becks &amp; Clates — Brand Strategy &amp; Consulting">
+  <meta name="twitter:description" content="Premium brand strategy and performance marketing consulting. We build brands that endure.">
+  <meta name="twitter:image"       content="https://becksandclates.com/assets/og-image.png">
+
+  <!-- Theme colour (browser chrome on mobile) -->
+  <meta name="theme-color" content="#0A0A0B">
+
+  <!-- Fonts — preconnect first, then non-blocking load -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+  <!-- Fallback system fonts while Google Fonts load -->
+  <style>
+    :root {
+      --font-display-fallback: 'Arial Black', 'Impact', sans-serif;
+      --font-heading-fallback: 'Georgia', serif;
+      --font-body-fallback:    'Helvetica Neue', 'Arial', sans-serif;
+    }
+  </style>
 
   <!-- Import Map for Three.js -->
   <script type="importmap">
@@ -20,12 +53,12 @@
   }
   </script>
 
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- GSAP — loaded synchronously (required before module scripts that use gsap global) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous"></script>
 
   <!-- Lenis Smooth Scroll -->
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="css/styles.css">
 </head>
