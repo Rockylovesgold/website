@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 120" fill="none">
+  <!-- B-mark: two interlocked rounded rectangles -->
+  <g>
+    <!-- Outer rounded rectangle (vertical) -->
+    <rect x="8" y="8" width="44" height="104" rx="14" ry="14" fill="none" stroke="#2d3139" stroke-width="9"/>
+    <!-- Inner horizontal bar top -->
+    <rect x="8" y="28" width="44" height="22" rx="8" ry="8" fill="#2d3139"/>
+    <!-- Inner horizontal bar bottom -->
+    <rect x="8" y="68" width="44" height="22" rx="8" ry="8" fill="#2d3139"/>
+    <!-- Vertical fill left -->
+    <rect x="8" y="8" width="18" height="104" rx="9" ry="9" fill="#2d3139"/>
+  </g>
+
+  <!-- Wordmark: Becks & Clates -->
+  <text x="78" y="74" font-family="'Syne', 'Arial Black', sans-serif" font-weight="700" font-size="48" fill="#2d3139" letter-spacing="-1">Becks &amp; Clates</text>
+
+  <!-- TM mark -->
+  <text x="456" y="34" font-family="'Inter', Arial, sans-serif" font-weight="400" font-size="14" fill="#2d3139">™</text>
+</svg>

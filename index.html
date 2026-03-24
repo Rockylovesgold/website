@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Becks &amp; Clates — Premium brand strategy and performance marketing consulting. We build brands that endure.">
+  <title>Becks &amp; Clates — Brand Strategy &amp; Consulting</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Import Map for Three.js -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js"
+    }
+  }
+  </script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Fixed UI Layer -->
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <canvas id="three-canvas" aria-hidden="true"></canvas>
+
+  <!-- Navigation -->
+  <nav id="nav" class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="#" class="nav__logo hoverable" aria-label="Becks &amp; Clates Home">
+        <svg width="140" height="32" viewBox="0 0 140 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="2" width="18" height="26" rx="4" fill="url(#logoGrad)"/>
+          <rect x="10" y="6" width="18" height="26" rx="4" fill="currentColor" opacity="0.15"/>
+          <rect x="10" y="6" width="18" height="26" rx="4" fill="url(#logoGrad)" opacity="0.7"/>
+          <text x="34" y="22" font-family="'Inter', sans-serif" font-weight="600" font-size="13" letter-spacing="0.06em" fill="currentColor">BECKS &amp; CLATES</text>
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="28" y2="32" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#E8A030"/>
+              <stop offset="100%" stop-color="#C040E0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="#about" class="nav__link hoverable">About</a></li>
+        <li><a href="#services" class="nav__link hoverable">Services</a></li>
+        <li><a href="#results" class="nav__link hoverable">Results</a></li>
+        <li><a href="#contact" class="nav__link hoverable">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn--primary nav__cta hoverable">Let's Talk</a>
+      <button class="nav__hamburger hoverable" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-panel">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Panel -->
+  <div id="mobile-panel" class="nav__mobile-panel" role="dialog" aria-label="Mobile menu" aria-hidden="true">
+    <div class="mobile-panel__overlay"></div>
+    <div class="mobile-panel__content">
+      <button class="mobile-panel__close hoverable" aria-label="Close menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <ul class="mobile-panel__links" role="list">
+        <li><a href="#about" class="mobile-link hoverable">About</a></li>
+        <li><a href="#services" class="mobile-link hoverable">Services</a></li>
+        <li><a href="#results" class="mobile-link hoverable">Results</a></li>
+        <li><a href="#contact" class="mobile-link hoverable">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn--primary mobile-panel__cta hoverable">Let's Talk</a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
+    <section id="hero" class="hero section--fullscreen">
+      <div class="container hero__content">
+        <span class="tag hero__eyebrow">Brand Strategy &amp; Performance Marketing</span>
+        <h1 class="hero__headline">
+          <span class="headline-line">We Build</span>
+          <span class="headline-line headline-line--accent">Brands</span>
+          <span class="headline-line">That Endure</span>
+        </h1>
+        <p class="hero__sub">Premium consulting for bold companies ready to grow with purpose.</p>
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn--primary hoverable">Start a Project</a>
+          <a href="#results" class="btn btn--ghost hoverable">View Results</a>
+        </div>
+      </div>
+      <div class="hero__scroll-hint" aria-hidden="true">
+        <div class="scroll-mouse">
+          <div class="scroll-mouse__wheel"></div>
+        </div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT
+    ============================================================ -->
+    <section id="about" class="about section">
+      <div class="container about__grid">
+        <div class="about__text">
+          <span class="tag">Our Story</span>
+          <h2>Built on the belief that great strategy is indistinguishable from great design</h2>
+          <p>We are a boutique consulting practice working with founders, investors and ambitious businesses who want to build something that lasts. Our approach combines strategic clarity with performance-driven marketing to create compounding growth.</p>
+          <p>Every engagement is led by a senior consultant. No juniors, no hand-offs — just focused, expert work on your business.</p>
+          <a href="#contact" class="link-arrow hoverable">
+            Work with us
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/>
+            </svg>
+          </a>
+        </div>
+        <div class="about__visual" aria-hidden="true">
+          <div class="about__visual-inner">
+            <div class="visual-block visual-block--1"></div>
+            <div class="visual-block visual-block--2"></div>
+            <div class="visual-stat">
+              <span class="visual-stat__num">5.2x</span>
+              <span class="visual-stat__label">Average ROI</span>
+            </div>
+            <div class="visual-stat visual-stat--2">
+              <span class="visual-stat__num">90d</span>
+              <span class="visual-stat__label">Avg. time to revenue</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SERVICES
+    ============================================================ -->
+    <section id="services" class="services section">
+      <div class="container">
+        <div class="section__header">
+          <span class="tag">What We Do</span>
+          <h2 class="section__heading">Capabilities</h2>
+        </div>
+        <div class="services__grid">
+
+          <div class="service-card hoverable">
+            <div class="service-card__icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="14" cy="14" r="11"/><path d="M9 14l3 3 7-7"/>
+              </svg>
+            </div>
+            <h3>Brand Strategy</h3>
+            <p>Crafting the narrative architecture that defines your market position and gives your business a voice that resonates.</p>
+          </div>
+
+          <div class="service-card hoverable">
+            <div class="service-card__icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <rect x="4" y="4" width="9" height="9" rx="1.5"/><rect x="15" y="4" width="9" height="9" rx="1.5"/><rect x="4" y="15" width="9" height="9" rx="1.5"/><rect x="15" y="15" width="9" height="9" rx="1.5"/>
+              </svg>
+            </div>
+            <h3>Identity Design</h3>
+            <p>Visual systems that communicate authority and credibility before a single word is spoken.</p>
+          </div>
+
+          <div class="service-card hoverable">
+            <div class="service-card__icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M4 20l6-6 4 4 6-8"/><circle cx="22" cy="8" r="2"/>
+              </svg>
+            </div>
+            <h3>Performance Marketing</h3>
+            <p>Data-driven paid advertising across Meta, LinkedIn and digital channels — built to generate qualified leads at scale.</p>
+          </div>
+
+          <div class="service-card hoverable">
+            <div class="service-card__icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M14 4v4M14 20v4M4 14h4M20 14h4"/><circle cx="14" cy="14" r="6"/>
+              </svg>
+            </div>
+            <h3>Lead Generation &amp; Outreach</h3>
+            <p>Outbound campaigns across LinkedIn, email and WhatsApp targeting the exact decision-makers who matter to your business.</p>
+          </div>
+
+          <div class="service-card hoverable">
+            <div class="service-card__icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M6 8h16M6 14h10M6 20h13"/><circle cx="22" cy="20" r="3"/>
+              </svg>
+            </div>
+            <h3>Market Positioning</h3>
+            <p>Research-backed differentiation that separates you from competitors and makes you the obvious choice in your category.</p>
+          </div>
+
+          <div class="service-card hoverable">
+            <div class="service-card__icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <rect x="4" y="4" width="20" height="16" rx="2"/><path d="M4 20l5-5 4 3 5-6 6 5"/>
+              </svg>
+            </div>
+            <h3>Website Design &amp; Development</h3>
+            <p>High-converting digital experiences that build trust and turn attention into revenue from the first interaction.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         RESULTS / CASE STUDIES
+    ============================================================ -->
+    <section id="results" class="results section">
+      <div class="container">
+        <div class="section__header">
+          <span class="tag">Client Results</span>
+          <h2 class="section__heading">Proven Outcomes</h2>
+          <p class="section__sub">Real businesses. Real numbers. Here is what we have delivered for our clients.</p>
+        </div>
+
+        <div class="results__grid">
+
+          <!-- Stone Consultancy -->
+          <article class="result-card hoverable" data-client="stone">
+            <div class="result-card__visual">
+              <div class="result-card__logo-wrap">
+                <div class="result-card__logo-bg" style="--grad-a:#E8A030;--grad-b:#F0B860;">
+                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                    <rect x="6" y="8" width="16" height="32" rx="3" fill="white" opacity="0.9"/>
+                    <rect x="14" y="14" width="22" height="22" rx="3" fill="white" opacity="0.5"/>
+                    <rect x="26" y="8" width="16" height="32" rx="3" fill="white" opacity="0.7"/>
+                  </svg>
+                </div>
+                <div class="result-card__company-info">
+                  <span class="result-card__name">Stone Consultancy</span>
+                  <span class="result-card__industry">Property Consultancy</span>
+                </div>
+              </div>
+              <div class="result-card__tags">
+                <span class="tag tag--sm">Performance Marketing</span>
+                <span class="tag tag--sm">Lead Generation</span>
+              </div>
+            </div>
+            <div class="result-card__body">
+              <div class="result-card__metrics">
+                <div class="metric">
+                  <span class="metric__value">127</span>
+                  <span class="metric__label">Qualified Leads</span>
+                </div>
+                <div class="metric">
+                  <span class="metric__value">£14</span>
+                  <span class="metric__label">Cost Per Lead</span>
+                </div>
+                <div class="metric">
+                  <span class="metric__value">5.2x</span>
+                  <span class="metric__label">ROI</span>
+                </div>
+                <div class="metric">
+                  <span class="metric__value">60d</span>
+                  <span class="metric__label">Campaign</span>
+                </div>
+              </div>
+              <div class="result-card__revenue">
+                <span class="revenue__label">Revenue Generated</span>
+                <span class="revenue__value">£18,000</span>
+              </div>
+              <p class="result-card__description">Stone Consultancy had no marketing infrastructure and zero inbound leads. We built a performance marketing system from scratch — launching Meta campaigns, producing video content and photography, and implementing lead capture systems. Within 60 days the campaign generated 127 qualified property leads at just £14 per lead, delivering £18,000 in revenue and a 5.2x return on investment.</p>
+              <div class="result-card__what-we-did">
+                <span class="what-we-did__label">What we implemented</span>
+                <ul>
+                  <li>Meta advertising campaigns targeting property investors and developers</li>
+                  <li>Ad creative, video content and photography production</li>
+                  <li>Lead capture and qualification systems</li>
+                  <li>Performance optimisation to reduce cost per lead</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Strata Ad -->
+          <article class="result-card hoverable" data-client="strata">
+            <div class="result-card__visual">
+              <div class="result-card__logo-wrap">
+                <div class="result-card__logo-bg" style="--grad-a:#6040E0;--grad-b:#C040E0;">
+                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                    <rect x="6" y="16" width="36" height="6" rx="2" fill="white" opacity="0.9"/>
+                    <rect x="6" y="26" width="28" height="6" rx="2" fill="white" opacity="0.6"/>
+                    <circle cx="40" cy="29" r="5" fill="white" opacity="0.8"/>
+                    <circle cx="40" cy="29" r="2" fill="none" stroke="white" stroke-width="1.5"/>
+                  </svg>
+                </div>
+                <div class="result-card__company-info">
+                  <span class="result-card__name">Strata Ad</span>
+                  <span class="result-card__industry">Digital Signage / Advertising</span>
+                </div>
+              </div>
+              <div class="result-card__tags">
+                <span class="tag tag--sm">Outbound Campaigns</span>
+                <span class="tag tag--sm">Performance Marketing</span>
+                <span class="tag tag--sm">Website Design</span>
+              </div>
+            </div>
+            <div class="result-card__body">
+              <div class="result-card__metrics">
+                <div class="metric">
+                  <span class="metric__value">14</span>
+                  <span class="metric__label">Booked Meetings</span>
+                </div>
+                <div class="metric">
+                  <span class="metric__value">2</span>
+                  <span class="metric__label">Conversions</span>
+                </div>
+                <div class="metric">
+                  <span class="metric__value">60d</span>
+                  <span class="metric__label">Campaign</span>
+                </div>
+                <div class="metric">
+                  <span class="metric__value">£0</span>
+                  <span class="metric__label">Prior Meetings</span>
+                </div>
+              </div>
+              <div class="result-card__revenue">
+                <span class="revenue__label">Deal Generated</span>
+                <span class="revenue__value">£24,000</span>
+              </div>
+              <p class="result-card__description">Strata Ad — a startup digital signage company with £300k raised — had run 500+ cold calls and secured just 2 meetings with 1 no-show. We implemented a multi-channel outbound strategy targeting councils, commercial buildings and coworking spaces. Within 60 days we generated 14 meetings and a £24,000 deal.</p>
+              <div class="result-card__what-we-did">
+                <span class="what-we-did__label">What we implemented</span>
+                <ul>
+                  <li>Outreach to councils and commercial building operators via LinkedIn, email and WhatsApp</li>
+                  <li>Meta advertising targeting coworking space operators</li>
+                  <li>CRM prospect list development and personalised messaging</li>
+                  <li>Sales deck creation and automated lead nurture system</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tomas -->
+          <article class="result-card hoverable" data-client="tomas">
+            <div class="result-card__visual">
+              <div class="result-card__logo-wrap">
+                <div class="result-card__logo-bg" style="--grad-a:#20C060;--grad-b:#E8A030;">
+                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                    <circle cx="24" cy="24" r="14" fill="none" stroke="white" stroke-width="2" opacity="0.6"/>
+                    <circle cx="24" cy="24" r="7" fill="white" opacity="0.9"/>
+                    <line x1="24" y1="6" x2="24" y2="14" stroke="white" stroke-width="2" opacity="0.7"/>
+                    <line x1="24" y1="34" x2="24" y2="42" stroke="white" stroke-width="2" opacity="0.7"/>
+                    <line x1="6" y1="24" x2="14" y2="24" stroke="white" stroke-width="2" opacity="0.7"/>
+                    <line x1="34" y1="24" x2="42" y2="24" stroke="white" stroke-width="2" opacity="0.7"/>
+                  </svg>
+                </div>
+                <div class="result-card__company-info">
+                  <span class="result-card__name">Tomas</span>
+                  <span class="result-card__industry">Consultancy / Software / B2B</span>
+                </div>
+              </div>
+              <div class="result-card__tags">
+                <span class="tag tag--sm">Performance Marketing</span>
+                <span class="tag tag--sm">Lead Generation</span>
+              </div>
+            </div>
+            <div class="result-card__body">
+              <div class="result-card__metrics">
+                <div class="metric">
+                  <span class="metric__value">Multi</span>
+                  <span class="metric__label">Deals Closed</span>
+                </div>
+                <div class="metric">
+                  <span class="metric__value">90d</span>
+                  <span class="metric__label">Campaign</span>
+                </div>
+                <div class="metric">
+                  <span class="metric__value">1–2</span>
+                  <span class="metric__label">Leads/mo Before</span>
+                </div>
+                <div class="metric">
+                  <span class="metric__value">↑</span>
+                  <span class="metric__label">Consistent Pipeline</span>
+                </div>
+              </div>
+              <div class="result-card__revenue">
+                <span class="revenue__label">Revenue Generated</span>
+                <span class="revenue__value">£44,000</span>
+              </div>
+              <p class="result-card__description">Tomas' business ran entirely on referrals — typically 1–2 conversations per month with no outbound marketing. We built a combined lead generation and performance marketing strategy targeting founders and operations decision-makers. Within 90 days the campaign delivered £44,000 in revenue across multiple deals and established a consistent, predictable sales pipeline.</p>
+              <div class="result-card__what-we-did">
+                <span class="what-we-did__label">What we implemented</span>
+                <ul>
+                  <li>LinkedIn and email outreach targeting founders and operational decision-makers</li>
+                  <li>Meta advertising campaigns aimed at business owners</li>
+                  <li>Targeted prospect lists and personalised outreach messaging</li>
+                  <li>Lead qualification before booking to ensure meeting quality</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Saffronol -->
+          <article class="result-card hoverable" data-client="saffron">
+            <div class="result-card__visual">
+              <div class="result-card__logo-wrap">
+                <div class="result-card__logo-bg" style="--grad-a:#E8A030;--grad-b:#E05030;">
+                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                    <path d="M24 8 L38 28 L24 40 L10 28 Z" fill="none" stroke="white" stroke-width="2" opacity="0.7"/>
+                    <path d="M24 14 L34 28 L24 36 L14 28 Z" fill="white" opacity="0.6"/>
+                    <circle cx="24" cy="28" r="4" fill="white" opacity="0.9"/>
+                  </svg>
+                </div>
+                <div class="result-card__company-info">
+                  <span class="result-card__name">Saffronol</span>
+                  <span class="result-card__industry">Outdoor Living / Property</span>
+                </div>
+              </div>
+              <div class="result-card__tags">
+                <span class="tag tag--sm">Performance Marketing</span>
+                <span class="tag tag--sm">Lead Generation</span>
+              </div>
+            </div>
+            <div class="result-card__body">
+              <div class="result-card__metrics">
+                <div class="metric">
+                  <span class="metric__value">1</span>
+                  <span class="metric__label">High-Value Deal</span>
+                </div>
+                <div class="metric">
+                  <span class="metric__value">30d</span>
+                  <span class="metric__label">Campaign</span>
+                </div>
+                <div class="metric">
+                  <span class="metric__value">New</span>
+                  <span class="metric__label">Channel Built</span>
+                </div>
+                <div class="metric">
+                  <span class="metric__value">0</span>
+                  <span class="metric__label">Prior Ad Spend</span>
+                </div>
+              </div>
+              <div class="result-card__revenue">
+                <span class="revenue__label">Deal Generated</span>
+                <span class="revenue__value">£24,000</span>
+              </div>
+              <p class="result-card__description">Saffronol, a high-end outdoor living and property enhancement company, relied on referrals with no digital lead generation in place. We launched a targeted performance marketing and outreach campaign within their first month. Within 30 days a single campaign generated a £24,000 high-value deal — proving the channel from a standing start.</p>
+              <div class="result-card__what-we-did">
+                <span class="what-we-did__label">What we implemented</span>
+                <ul>
+                  <li>Meta advertising targeting homeowners, property developers and investors</li>
+                  <li>Ad creative highlighting premium outdoor living installations</li>
+                  <li>LinkedIn and email outreach to relevant property contacts</li>
+                  <li>Lead capture and qualification systems from scratch</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Aggregate stats bar -->
+        <div class="results__aggregate">
+          <div class="agg-stat">
+            <span class="agg-stat__value gradient-text">£110k+</span>
+            <span class="agg-stat__label">Revenue Generated</span>
+          </div>
+          <div class="agg-divider" aria-hidden="true"></div>
+          <div class="agg-stat">
+            <span class="agg-stat__value gradient-text">5.2x</span>
+            <span class="agg-stat__label">Highest ROI Delivered</span>
+          </div>
+          <div class="agg-divider" aria-hidden="true"></div>
+          <div class="agg-stat">
+            <span class="agg-stat__value gradient-text">30–90d</span>
+            <span class="agg-stat__label">Time to First Revenue</span>
+          </div>
+          <div class="agg-divider" aria-hidden="true"></div>
+          <div class="agg-stat">
+            <span class="agg-stat__value gradient-text">4</span>
+            <span class="agg-stat__label">Industries Served</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CTA
+    ============================================================ -->
+    <section id="contact" class="cta-section section">
+      <div class="container cta__inner">
+        <span class="tag">New Projects</span>
+        <h2 class="cta__headline gradient-text">Ready to build something that matters?</h2>
+        <p>We are accepting select new projects for 2026. Every engagement is senior-led, results-focused and built around your specific goals.</p>
+        <a href="mailto:hello@becksandclates.com" class="btn btn--primary btn--large hoverable">Get in Touch</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__top">
+        <a href="#" class="footer__logo hoverable" aria-label="Becks &amp; Clates">
+          <svg width="120" height="28" viewBox="0 0 140 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="2" width="18" height="26" rx="4" fill="url(#footerLogoGrad)"/>
+            <rect x="10" y="6" width="18" height="26" rx="4" fill="currentColor" opacity="0.1"/>
+            <rect x="10" y="6" width="18" height="26" rx="4" fill="url(#footerLogoGrad)" opacity="0.5"/>
+            <text x="34" y="22" font-family="'Inter', sans-serif" font-weight="600" font-size="13" letter-spacing="0.06em" fill="currentColor" opacity="0.6">BECKS &amp; CLATES</text>
+            <defs>
+              <linearGradient id="footerLogoGrad" x1="0" y1="0" x2="28" y2="32" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#E8A030"/>
+                <stop offset="100%" stop-color="#C040E0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </a>
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <a href="#about" class="footer__link hoverable">About</a>
+          <a href="#services" class="footer__link hoverable">Services</a>
+          <a href="#results" class="footer__link hoverable">Results</a>
+          <a href="#contact" class="footer__link hoverable">Contact</a>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__legal">&copy; 2026 Becks &amp; Clates. All rights reserved.</p>
+        <p class="footer__tagline">Brands built to endure.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
